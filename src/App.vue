@@ -1,4 +1,4 @@
-import './assets/css/main.css'
+import './assets/base.css'
 
 <template>
   <div class="inline-block relative w-full">
