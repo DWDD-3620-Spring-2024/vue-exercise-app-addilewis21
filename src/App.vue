@@ -1,5 +1,36 @@
 import './assets/base.css'
-
+<script>
+export default {
+  data() {
+    return {
+      exercises: [],
+      newExercise: {
+        type: '',
+        date: '',
+        time: '',
+        sets: '',
+        reps: '',
+        weight: ''
+      }
+    };
+  },
+ methods: {
+    addExercise() {
+      this.exercises.push({ ...this.newExercise, isEditing: false });
+      this.newExercise = { type: '', date: '', time: '', sets: '', reps: '', weight: '', length: '' };
+    },
+    editExercise(index) {
+      this.exercises[index].isEditing = true;
+    },
+    updateExercise(index) {
+      this.exercises[index].isEditing = false;
+    },
+    deleteExercise(index) {
+      this.exercises.splice(index, 1);
+    }
+  }
+};
+</script>
 <template>
   <div class="m-auto mt-40 w-1/2">
     <form @submit.prevent="addExercise">
@@ -82,36 +113,5 @@ import './assets/base.css'
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      exercises: [],
-      newExercise: {
-        type: '',
-        date: '',
-        time: '',
-        sets: '',
-        reps: '',
-        weight: ''
-      }
-    };
-  },
- methods: {
-    addExercise() {
-      this.exercises.push({ ...this.newExercise, isEditing: false });
-      this.newExercise = { type: '', date: '', time: '', sets: '', reps: '', weight: '', length: '' };
-    },
-    editExercise(index) {
-      this.exercises[index].isEditing = true;
-    },
-    updateExercise(index) {
-      this.exercises[index].isEditing = false;
-    },
-    deleteExercise(index) {
-      this.exercises.splice(index, 1);
-    }
-  }
-};
-</script>
+
 
